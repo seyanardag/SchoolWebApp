@@ -1,8 +1,12 @@
 
 
 using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +19,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+//DbContext in Dependency Injection Conteyner ýna eklenmesi;
 builder.Services.AddDbContext<SchoolDbContext>( options => options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolDbConnection")) );
+
+//AutoMapper ýn servise eklenmesi;
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+
+builder.Services.AddScoped<IStudentService, StudentManager>();
+builder.Services.AddScoped<IStudentDal, EfStudentDal>();
 
 
 

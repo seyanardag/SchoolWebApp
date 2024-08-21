@@ -15,7 +15,7 @@ namespace EntityLayer.Entities
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime EnrollmentDate { get; set; }  //Kayıt Tarihi
-		public bool isDeleted { get; set; }
+		public bool isDeleted { get; set; } = false; //Default olarak false ayarladık
         public string ImgUrl {  get; set; }
         
 
