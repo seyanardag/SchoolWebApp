@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
 	public interface IStudentDal : IGenericDal<Student>
 	{
+		Task<List<Student>> GetDeletedStudentList();
 	}
 }

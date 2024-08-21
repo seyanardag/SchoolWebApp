@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
 	public interface IStudentService : IGenericService<Student>
 	{
+		Task<List<Student>> TGetDeletedStudentList();
+
 	}
 }

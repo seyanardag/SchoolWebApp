@@ -2,6 +2,7 @@
 using DataAccessLayer.Context;
 using DataAccessLayer.Repositories;
 using EntityLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,11 @@ namespace DataAccessLayer.Concrete
 	{
 		public EfStudentDal(SchoolDbContext context) : base(context)
 		{
+		}
+
+		public async Task<List<Student>> GetDeletedStudentList()
+		{
+			return await _context.Students.IgnoreQueryFilters().Where(x=>x.isDeleted).ToListAsync();
 		}
 	}
 }

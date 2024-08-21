@@ -12,8 +12,8 @@ namespace DataAccessLayer.Repositories
 	//T tipinde gelen herhangi bir entity e ait temel database işlemlerinin gerçekleştirilmesi. Bu işlemler zaten bütün Entity ler için kullanılacak olan işlemler ve Repository Design Pattern sayesinde bu işlemleri her bir Entity için ayrı ayrı yazmak zorunda kalmıyoruz. 
 	public class GenericRepository <T> : IGenericDal<T> where T : class
 	{
-
-		private readonly SchoolDbContext _context;
+		//Generic repository den miras alan sınıfların _context i buradaki DbContext örneğinden kullanabilmeleri için protected olarak işaretledik.
+		protected readonly SchoolDbContext _context;
 
 		public GenericRepository(SchoolDbContext context)
 		{

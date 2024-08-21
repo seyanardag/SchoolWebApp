@@ -35,6 +35,12 @@ namespace WebApi.Controllers
 			var value = await _studentService.TGetByIdAsync(id);
 			return Ok(value);
 		}
+		[HttpGet("GetDeletedStudentList")]
+		public async Task<IActionResult> GetDeletedStudentList()
+		{
+			var values = await _studentService.TGetDeletedStudentList();
+			return Ok(values);
+		}
 
 		[HttpPost()]
 		public async Task<IActionResult> CreateStudent(CreateStudentDto createStudentDto )
