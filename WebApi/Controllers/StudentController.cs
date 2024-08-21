@@ -44,6 +44,22 @@ namespace WebApi.Controllers
 			return Ok("Öğrenci oluşturma başarılı");
 		}
 
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteStudent(int id)
+		{
+			await _studentService.TDeleteAsync(id);
+			return Ok("Öğrenci silme başarılı");
+		}
+
+		[HttpPut()]
+		public async Task<IActionResult> UpdateStudent(UpdateStudentDto updateStudentDto)
+		{
+			Student studentToUpdate = _mapper.Map<Student>(updateStudentDto);
+			await _studentService.TUpdateAsync(studentToUpdate);
+
+			return Ok("Öğrenci güncelleme başarılı");
+		}
+
 
 	}
 }
