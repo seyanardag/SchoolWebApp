@@ -10,7 +10,7 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-header">
-				<div class="card-title">Öğrenci Listesi</div>
+				<div class="card-title">Silinen Öğrenci Listesi</div>
 			</div>
 			<div class="card-body">
 				<div class="card-sub">
@@ -18,7 +18,7 @@
 					<p><strong>Detaylı olarak görmek istediğiniz resmin üzerine tıklayabilirisiniz</strong></p>
 
 				</div>
-				<table class="table mt-3">
+				<table class="table mt-3" style="background-color:#FFD0D0">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
@@ -55,11 +55,11 @@
 								<td>@item.EnrollmentDate.ToString("dd MMM yyyy")</td>
 
 								<td>
-									<a class=" btn btn-outline-danger sweetAlertConfirm" asp-controller="DeletedStudent" asp-action="HardDeleteStudent" asp-route-id="@item.StudentId">TAMAMEN SİL</a>
+									<a class=" btn btn-danger sweetAlertConfirm" asp-controller="DeletedStudent" asp-action="HardDeleteStudent" asp-route-id="@item.StudentId">TAMAMEN SİL</a>
 								</td>
 
 								<td>
-									<a class=" btn btn-outline-warning sweetAlertConfirm" asp-controller="DeletedStudent" asp-action="UnDeleteStudent" asp-route-id="@item.StudentId">SİLMEYİ GERİ AL</a>
+									<a class=" btn btn-warning sweetAlertConfirm" asp-controller="DeletedStudent" asp-action="UnDeleteStudent" asp-route-id="@item.StudentId">SİLMEYİ GERİ AL</a>
 								</td>
 							</tr>
 						}
