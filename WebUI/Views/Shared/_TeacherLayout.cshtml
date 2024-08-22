@@ -137,26 +137,13 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="~/adminTemplate/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span>Hizrian</span></span> </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li>
-                                    <div class="user-box">
-                                        <div class="u-img"><img src="~/adminTemplate/assets/img/profile.jpg" alt="user"></div>
-                                        <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@themekita.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="ti-user"></i> My Profile</a>
-                                <a class="dropdown-item" href="#"></i> My Balance</a>
-                                <a class="dropdown-item" href="#"><i class="ti-email"></i> Inbox</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
-                            </ul>
+
+
+                            @if(User.Identity.IsAuthenticated){
+                                
+                            @await Component.InvokeAsync("_ProfileVC")
+                            }
+
                             <!-- /.dropdown-user -->
                         </li>
                     </ul>
@@ -227,60 +214,35 @@
                         </a>
                     </li>
 
-
-
-
                     <hr />
-
-
-                    <li class="nav-item active">
-                        <a href="index.html">
-                            <i class="la la-dashboard"></i>
-                            <p>Dashboard</p>
-                            <span class="badge badge-count">5</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
-                        <a href="components.html">
+                        <a href="/Register/Index/">
                             <i class="la la-table"></i>
-                            <p>Components</p>
-                            <span class="badge badge-count">14</span>
+                            <p>Kayıt Ol</p>
+                            <span class="badge badge-count">0</span>
                         </a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a href="forms.html">
-                            <i class="la la-keyboard-o"></i>
-                            <p>Forms</p>
-                            <span class="badge badge-count">50</span>
+                        <a href="/Login/Index/">
+                            <i class="la la-table"></i>
+                            <p>Giriş Yap</p>
+                            <span class="badge badge-count">0</span>
                         </a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a href="tables.html">
-                            <i class="la la-th"></i>
-                            <p>Tables</p>
-                            <span class="badge badge-count">6</span>
+                        <a href="/Login/Logout/">
+                            <i class="la la-table"></i>
+                            <p>Çıkış Yap</p>
+                            <span class="badge badge-count">0</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="notifications.html">
-                            <i class="la la-bell"></i>
-                            <p>Notifications</p>
-                            <span class="badge badge-success">3</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="typography.html">
-                            <i class="la la-font"></i>
-                            <p>Typography</p>
-                            <span class="badge badge-danger">25</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="icons.html">
-                            <i class="la la-fonticons"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
+
+
+
+
+
                     
                 </ul>
             </div>

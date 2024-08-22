@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -9,22 +10,26 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Context
 {
-	public class SchoolDbContext : DbContext
+	public class SchoolDbContext : IdentityDbContext<CustomUser, CustomRole, int>
 	{
 		public SchoolDbContext(DbContextOptions<SchoolDbContext> options) : base(options)
 		{
 		}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database=SchoolDb; Integrated security=true;");
+        }
 
-
-		//Öğrencilere ait tablonun oluşturulması
-		public DbSet<Student> Students { get; set; }
+        //Öğrencilere ait tablonun oluşturulması
+        public DbSet<Student> Students { get; set; }
 
 
 		//OnModelCreating metodunun override edilerek Database in Seedlenmesi
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			//Student üzeirinde softDelete olarak silinmiş kayıtları getirmemesi için QueryFilter eklenmesi;
-			modelBuilder.Entity<Student>().HasQueryFilter(x => !x.isDeleted);
+            base.OnModelCreating(modelBuilder);
+            //Student üzeirinde softDelete olarak silinmiş kayıtları getirmemesi için QueryFilter eklenmesi;
+            modelBuilder.Entity<Student>().HasQueryFilter(x => !x.isDeleted);
 
 			modelBuilder.Entity<Student>().HasData(
 				new Student() { StudentId = 1, FirstName = "Mehmet", LastName = "Ekinci", BirthDate = new DateTime(2002, 5, 15), EnrollmentDate = new DateTime(2023, 9, 12), ImgUrl = "/images/studentImages/e1.png" },

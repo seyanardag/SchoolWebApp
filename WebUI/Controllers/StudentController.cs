@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Text;
@@ -7,6 +8,7 @@ using WebUI.UIDtos.StudentDto;
 
 namespace WebUI.Controllers
 {
+    [AllowAnonymous]
 	public class StudentController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;

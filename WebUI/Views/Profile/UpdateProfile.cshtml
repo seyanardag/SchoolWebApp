@@ -1,0 +1,87 @@
+﻿@model UserEditDtoUI
+@{
+    ViewData["Title"] = "UpdateProfile";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+
+        <form method="post" asp-controller="Profile" asp-action="UpdateProfile" enctype="multipart/form-data">
+
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Profil Bilgileri Güncelleme</div>
+                </div>
+                <div class="card-body">
+
+
+
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input type="text" class="form-control" asp-for="Name" placeholder="Ad">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Surname"></label>
+                        <input type="text" class="form-control" asp-for="Surname" placeholder="Soyad">
+                        <span class="text-danger" asp-validation-for="Surname"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="UserName"></label>
+                        <input type="text" class="form-control" asp-for="UserName" placeholder="Kullanıcı Adı">
+                        <span class="text-danger" asp-validation-for="UserName"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input type="email" class="form-control" asp-for="Email" placeholder="e-posta">
+                        <span class="text-danger" asp-validation-for="Email"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input type="password" class="form-control" asp-for="Password" placeholder="Yeni Şifre (opsiyonel)">
+                        <span class="text-danger" asp-validation-for="Password"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PasswordConfirm"></label>
+                        <input type="password" class="form-control" asp-for="PasswordConfirm" placeholder="Şifreyi Onayla (opsiyonel)">
+                        <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div>Profil Fotoğrafı</div>
+                        <div class="border border-3 bg-light rounded p-3">
+
+                            <input type="hidden" class="form-control" asp-for="ImageUrl">
+                            <label>Eski görsel</label><br />
+                            <img src="@Model.ImageUrl" width="150" height="auto" /><br />
+
+                            <label class="mt-3">Yeni görseli seçiniz</label><br />
+                            <input class="my-2" type="file" asp-for="ImageFile" />
+                        </div>
+                    </div>
+
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+
+
+                </div>
+                <div class="card-action">
+                    <button type="submit" class="btn btn-success mr-2">Güncelle</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

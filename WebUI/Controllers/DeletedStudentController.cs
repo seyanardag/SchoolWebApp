@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using WebUI.CustomServices.Abstract;
@@ -6,6 +7,8 @@ using WebUI.UIDtos.StudentDto;
 
 namespace WebUI.Controllers
 {
+    [AllowAnonymous]
+
     public class DeletedStudentController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
