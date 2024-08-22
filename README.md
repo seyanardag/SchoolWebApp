@@ -2,22 +2,39 @@
 Projede bir okulun öğrenci kayıtlarının tutulduğu SchoolWeb isimli küçük bir demo web uygulaması yapılmıştır. Projeye ait ekran görüntüleri bu sayfa sonuuna eklenmiştir.
 Projede Kullanılan Teknolojiler;
 •	C#
+
 •	AspNet Core 8.0
+
 •	n-Tier Architecture
+
 •	Repository Design Pattern
+
 •	Asp.Net Core WebApi
+
 •	AutoMapper
+
 •	Swagger
+
 •	Entity Framework Core – LinQ
+
 •	QueryFilter
+
 •	EF Core - Identity
+
 •	DTO
+
 •	Code-First
+
 •	MsSQL 
+
 •	Html, Css, Bootstrap
+
 •	SweetAlert
+
 •	ViewComponent
+
 •	PartialView
+
 
 
 Projede nTier Achitecture kullanılmıştır. Öğretmenin yetkili olduğu kabul edilen projede TeacherLayout olarak tek bir layout kullanılmıştır.  
