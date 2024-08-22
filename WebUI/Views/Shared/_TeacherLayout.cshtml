@@ -5,58 +5,16 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Ready Bootstrap Dashboard</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <link rel="stylesheet" href="~/adminTemplate/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="~/adminTemplate/assets/css/ready.css">
-    <link rel="stylesheet" href="~/adminTemplate/assets/css/demo.css">
-
-
-
-    <!-- SweetAlert2 CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-
-    <!-- SweetAlert2 JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.sweetAlertConfirm').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault(); // Bağlantının varsayılan davranışını engelle
-
-                    let href = this.getAttribute('href'); // Bağlantının href değerini al
-
-                    Swal.fire({
-                        title: 'Onayla',
-                        text: 'Bu işlemi yapmak istediğinizden emin misiniz?',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Evet',
-                        cancelButtonText: 'Hayır'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            // Kullanıcı onayladıysa bağlantıya yönlendir
-                            window.location.href = href;
-                        }
-                    });
-                });
-            });
-        });
-    </script>
-
+    @Html.Partial("Partials/_TeacherLayoutHeadPartial.cshtml")
 </head>
 <body>
 
     <div class="wrapper">
         <div class="main-header">
             <div class="logo-header">
-                <a href="#" class="logo">
+                <a href="" class="logo">
                     Yönetim Paneli
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,73 +27,8 @@
 
 
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="la la-envelope"></i>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="la la-bell"></i>
-                                <span class="notification">3</span>
-                            </a>
-                            <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <div class="dropdown-title">You have 4 new notification</div>
-                                </li>
-                                <li>
-                                    <div class="notif-center">
-                                        <a href="#">
-                                            <div class="notif-icon notif-primary"> <i class="la la-user-plus"></i> </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    New user registered
-                                                </span>
-                                                <span class="time">5 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Rahmad commented on Admin
-                                                </span>
-                                                <span class="time">12 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-img">
-                                                <img src="~/adminTemplate/assets/img/profile2.jpg" alt="Img Profile">
-                                            </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Reza send messages to you
-                                                </span>
-                                                <span class="time">12 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Farrah liked Admin
-                                                </span>
-                                                <span class="time">17 minutes ago</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="see-all" href="javascript:void(0);"> <strong>See all notifications</strong> <i class="la la-angle-right"></i> </a>
-                                </li>
-                            </ul>
-                        </li>
+                      
+
                         <li class="nav-item dropdown">
 
 
@@ -152,98 +45,59 @@
         </div>
         <div class="sidebar">
             <div class="scrollbar-inner sidebar-wrapper">
-                <div class="user">
-                    <div class="photo">
-                        <img src="~/adminTemplate/assets/img/profile.jpg">
-                    </div>
-                    <div class="info">
-                        <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                            <span>
-                                Hizrian
-                                <span class="user-level">Administrator</span>
-                                <span class="caret"></span>
-                            </span>
-                        </a>
-                        <div class="clearfix"></div>
-
-                        <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
-                            <ul class="nav">
-                                <li>
-                                    <a href="#profile">
-                                        <span class="link-collapse">My Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#edit">
-                                        <span class="link-collapse">Edit Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#settings">
-                                        <span class="link-collapse">Settings</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                
                 <ul class="nav">
 
-                    <li class="nav-item">
+                    <li class="nav-item @IsActive("Student","Index")">
                         <a href="/Student/Index/">
                             <i class="la la-table"></i>
                             <p>Öğrenci Listesi</p>
-                            <span class="badge badge-count">0</span>
                         </a>
                     </li>
 
 
-                    <li class="nav-item">
+                    <li class="nav-item @IsActive("Student","CreateStudent")">
                         <a href="/Student/CreateStudent/">
                             <i class="la la-table"></i>
                             <p>Yeni Öğrenci Girişi</p>
-                            <span class="badge badge-count">14</span>
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item @IsActive("DeletedStudent","Index")">
                         <a href="/DeletedStudent/Index/">
                             <i class="la la-table"></i>
                             <p>Silinen Öğrenci Listesi</p>
-                            <span class="badge badge-count">0</span>
                         </a>
                     </li>
 
                     <hr />
-                    <li class="nav-item">
+                    <li class="nav-item @IsActive("Register","Index")">
                         <a href="/Register/Index/">
                             <i class="la la-table"></i>
                             <p>Kayıt Ol</p>
-                            <span class="badge badge-count">0</span>
                         </a>
                     </li>
                     
-                    <li class="nav-item">
+                    <li class="nav-item @IsActive("Login","Index")">
                         <a href="/Login/Index/">
                             <i class="la la-table"></i>
                             <p>Giriş Yap</p>
-                            <span class="badge badge-count">0</span>
                         </a>
                     </li>
                     
-                    <li class="nav-item">
+                    <li class="nav-item @IsActive("Profile","UpdateProfile")">
+                        <a href="/Profile/UpdateProfile/">
+                            <i class="la la-table"></i>
+                            <p>Profil Güncelle</p>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item @IsActive("Login","Logout")">
                         <a href="/Login/Logout/">
                             <i class="la la-table"></i>
                             <p>Çıkış Yap</p>
-                            <span class="badge badge-count">0</span>
                         </a>
-                    </li>
-
-
-
-
-
-                    
+                    </li>                    
                 </ul>
             </div>
         </div>
@@ -259,20 +113,19 @@
         </div>
     </div>
 
+    @functions {
+        public string IsActive(string controllerName, string actionName)
+        {
+            string controller = ViewContext.RouteData.Values["controller"]?.ToString();
+            string action = ViewContext.RouteData.Values["action"]?.ToString();
+
+
+            string result = (controller == controllerName && action == actionName) ? "active" : "";
+            return result;
+        }
+    }
 
 </body>
-<script src="~/adminTemplate/assets/js/core/jquery.3.2.1.min.js"></script>
-<script src="~/adminTemplate/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-<script src="~/adminTemplate/assets/js/core/popper.min.js"></script>
-<script src="~/adminTemplate/assets/js/core/bootstrap.min.js"></script>
-<script src="~/adminTemplate/assets/js/plugin/chartist/chartist.min.js"></script>
-<script src="~/adminTemplate/assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
-@* <script src="~/adminTemplate/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script> *@
-<script src="~/adminTemplate/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
-<script src="~/adminTemplate/assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="~/adminTemplate/assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
-<script src="~/adminTemplate/assets/js/plugin/chart-circle/circles.min.js"></script>
-<script src="~/adminTemplate/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-<script src="~/adminTemplate/assets/js/ready.min.js"></script>
-<script src="~/adminTemplate/assets/js/demo.js"></script>
+@Html.Partial("Partials/_TeacherLayoutScriptPartial.cshtml")
+
 </html>

@@ -19,8 +19,8 @@ namespace WebUI.SeedIdentityDb
                 {
                     UserName = "admin",
                     Email = userEmail,
-                    Name = "Admin",
-                    Surname = "User",
+                    Name = "Teklif Group",
+                    Surname = "Yazılım",
                     ImageUrl = "/images/userImages/adminDefaultPic.png"
                 };
 

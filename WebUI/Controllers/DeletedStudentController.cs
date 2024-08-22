@@ -7,7 +7,7 @@ using WebUI.UIDtos.StudentDto;
 
 namespace WebUI.Controllers
 {
-    [AllowAnonymous]
+   
 
     public class DeletedStudentController : Controller
     {
