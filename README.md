@@ -1,6 +1,7 @@
 # SchoolWebApp
 Projede bir okulun öğrenci kayıtlarının tutulduğu SchoolWeb isimli küçük bir demo web uygulaması yapılmıştır. Projeye ait ekran görüntüleri bu sayfa sonuuna eklenmiştir.
 Projede Kullanılan Teknolojiler;
+
 •	C#
 
 •	AspNet Core 8.0
