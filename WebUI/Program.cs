@@ -58,6 +58,18 @@ app.UseAuthentication();  //Authenticaton için ekledik
 
 app.UseAuthorization();
 
+//Geçersiz URL vb için hata sayfasýna yönlendirilmesi
+app.UseStatusCodePages(async context =>
+{
+    var response = context.HttpContext.Response;
+    if (response.StatusCode != 200)
+    {
+        response.Redirect("/Error/ErrorPage");
+    }
+});
+
+
+
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Login}/{action=Index}/{id?}");
