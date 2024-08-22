@@ -45,6 +45,8 @@ namespace WebApi.Controllers
 		[HttpPost()]
 		public async Task<IActionResult> CreateStudent(CreateStudentDto createStudentDto )
 		{
+
+
 			var value = _mapper.Map<Student>(createStudentDto);
 			await _studentService.TAddAsync(value);
 			return Ok("Öğrenci oluşturma başarılı");

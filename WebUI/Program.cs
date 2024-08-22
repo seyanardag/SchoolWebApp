@@ -35,9 +35,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<IFileUploadService, FileUploadService>();
 
 
+
 //HttpClient istekleri için gerekli servisin eklenmesi;
 builder.Services.AddHttpClient();
-
 
 
 var app = builder.Build();

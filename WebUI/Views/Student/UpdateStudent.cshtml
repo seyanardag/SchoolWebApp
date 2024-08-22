@@ -5,6 +5,13 @@
 }
 
 
+<style>
+    span {
+        color: red;
+        font-size: 9pt;
+    }
+</style>
+
 <div class="row">
     <div class="col-md-12">
 
@@ -19,18 +26,26 @@
                     <div class="form-group">
                         <label asp-for="FirstName">Öğrenci Adı</label>
                         <input type="text" class="form-control" asp-for="FirstName">
+                        <span asp-validation-for="FirstName"></span>
+
                     </div>
                     <div class="form-group">
                         <label asp-for="LastName">Öğrenci Soyadı</label>
                         <input type="text" class="form-control" asp-for="LastName">
+                        <span asp-validation-for="LastName"></span>
+
                     </div>
                     <div class="form-group">
                         <label asp-for="BirthDate">Doğum Tarihi</label>
                         <input type="date" class="form-control" asp-for="BirthDate">
+                        <span asp-validation-for="BirthDate"></span>
+
                     </div>
                     <div class="form-group">
                         <label asp-for="EnrollmentDate">Kayıt Tarihi</label>
                         <input type="date" class="form-control" asp-for="EnrollmentDate">
+                        <span asp-validation-for="EnrollmentDate"></span>
+
                     </div>
 
                     <div class="form-group ">

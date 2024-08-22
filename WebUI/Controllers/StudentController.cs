@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+
 using System.Text;
 using WebUI.CustomServices.Abstract;
 using WebUI.UIDtos.StudentDto;
+using WebUI.UIDtos.Validations;
 
 namespace WebUI.Controllers
 {
@@ -47,6 +51,22 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateStudent(CreateStudentDtoUI createStudentDtoUI)
         {
+
+            var validator = new CreateStudentDtoUIValidator();
+            ValidationResult validationResult = validator.Validate(createStudentDtoUI);
+
+            if (!validationResult.IsValid)
+            {               
+                foreach (var error in validationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return View(createStudentDtoUI);
+            }
+
+
+
+
             createStudentDtoUI.ImgUrl = await _fileUploadService.UploadFileAsync(createStudentDtoUI.ImgFile, "images/studentImages");
 
            
@@ -91,6 +111,23 @@ namespace WebUI.Controllers
 		[HttpPost]
         public async Task<IActionResult> UpdateStudent(UpdateStudentDtoUI updateStudentDtoUI)
         {
+
+            var validator = new UpdateStudentDtoUIValidator();
+            ValidationResult validationResult = validator.Validate(updateStudentDtoUI);
+
+            if (!validationResult.IsValid)
+            {
+                foreach (var error in validationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return View(updateStudentDtoUI);
+            }
+
+
+
+
+
 
             //resim için işlemler
             if (updateStudentDtoUI.ImgFile != null && updateStudentDtoUI.ImgFile.Length > 0)
