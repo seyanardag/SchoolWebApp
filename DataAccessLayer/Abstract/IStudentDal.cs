@@ -10,5 +10,8 @@ namespace DataAccessLayer.Abstract
 	public interface IStudentDal : IGenericDal<Student>
 	{
 		Task<List<Student>> GetDeletedStudentList();
+		Task<Student> SoftDeletestudentAsync(int id);
+		Task<Student> HardDeletestudentAsync(int id);
+		Task<Student> UnDeletestudentAsync(int id);
 	}
 }

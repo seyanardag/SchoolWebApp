@@ -22,7 +22,7 @@ namespace WebApi.Controllers
 			_mapper = mapper;
 		}
 
-		[HttpGet]
+		[HttpGet("StudentList")]
 		public async Task<IActionResult> StudentList()
 		{
 			var values = await _studentService.TGetAllAsync();
@@ -50,14 +50,34 @@ namespace WebApi.Controllers
 			return Ok("Öğrenci oluşturma başarılı");
 		}
 
-		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteStudent(int id)
+		[HttpDelete("SoftDeleteStudent/{id}")]
+		public async Task<IActionResult> SoftDeleteStudent(int id)
 		{
-			await _studentService.TDeleteAsync(id);
-			return Ok("Öğrenci silme başarılı");
+
+			var deletedStudent = await _studentService.TSoftDeletestudentAsync(id);
+			return Ok(deletedStudent);
+
+	
 		}
 
-		[HttpPut()]
+		[HttpDelete("HardDeleteStudent/{id}")]
+		public async Task<IActionResult> HardDeleteStudent(int id)
+		{
+
+			var deletedStudent = await _studentService.THardDeletestudentAsync(id);
+			return Ok(deletedStudent);
+
+		}
+
+		[HttpGet("UnDeleteStudent/{id}")]
+        public async Task<IActionResult> UnDeleteStudent(int id)
+        {
+			var valueToUndelete = await _studentService.TUnDeletestudentAsync(id);
+			return Ok(valueToUndelete);
+        }
+
+
+        [HttpPut()]
 		public async Task<IActionResult> UpdateStudent(UpdateStudentDto updateStudentDto)
 		{
 			Student studentToUpdate = _mapper.Map<Student>(updateStudentDto);

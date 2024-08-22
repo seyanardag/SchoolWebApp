@@ -43,7 +43,22 @@ namespace BusinessLayer.Concrete
 			return _studentDal.GetDeletedStudentList();
 		}
 
-		public Task TUpdateAsync(Student entity)
+		public Task<Student> THardDeletestudentAsync(int id)
+		{
+			return _studentDal.HardDeletestudentAsync(id);
+		}
+
+		public Task<Student> TSoftDeletestudentAsync(int id)
+		{
+			return _studentDal.SoftDeletestudentAsync(id);
+		}
+
+        public Task<Student> TUnDeletestudentAsync(int id)
+        {
+            return _studentDal.UnDeletestudentAsync(id) ;
+        }
+
+        public Task TUpdateAsync(Student entity)
 		{
 			return _studentDal.UpdateAsync(entity);
 		}

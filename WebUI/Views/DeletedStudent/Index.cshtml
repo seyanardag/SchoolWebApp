@@ -1,0 +1,81 @@
+﻿@model List<ResultStudentDtoUI>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+	int count = 1;
+}
+
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">Öğrenci Listesi</div>
+			</div>
+			<div class="card-body">
+				<div class="card-sub">
+					<p>Silinen öğrenciler ile ilgili işlemleri burada gerçekleştirebilirsiniz.</p>
+					<p><strong>Detaylı olarak görmek istediğiniz resmin üzerine tıklayabilirisiniz</strong></p>
+
+				</div>
+				<table class="table mt-3">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Fotoğraf</th>
+							<th scope="col">Öğrenci Adı</th>
+							<th scope="col">Öğrenci Soyadı</th>
+							<th scope="col">Doğum Tarihi</th>
+							<th scope="col">Kayıt Tarihi</th>
+
+							<th scope="col">Sil</th>
+							<th scope="col">Güncelle</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						@foreach (var item in Model)
+						{
+
+							<tr>
+								<td>@(count++)</td>
+								<td>
+									@await Html.PartialAsync("_modalTemplate", (@item.StudentId.ToString(), @item.ImgUrl))
+
+									<!-- Button trigger modal -->
+									<button type="button" class="" data-toggle="modal" data-target="#exampleModal_@item.StudentId" style="border:none; background:none; cursor:pointer">
+										<img src="@item.ImgUrl" height="70" width="auto" />
+
+									</button>
+								</td>
+
+								<td>@item.FirstName</td>
+								<td>@item.LastName</td>
+								<td>@item.BirthDate.ToString("dd MMM yyyy") </td>
+								<td>@item.EnrollmentDate.ToString("dd MMM yyyy")</td>
+
+								<td>
+									<a class=" btn btn-outline-danger sweetAlertConfirm" asp-controller="DeletedStudent" asp-action="HardDeleteStudent" asp-route-id="@item.StudentId">TAMAMEN SİL</a>
+								</td>
+
+								<td>
+									<a class=" btn btn-outline-warning sweetAlertConfirm" asp-controller="DeletedStudent" asp-action="UnDeleteStudent" asp-route-id="@item.StudentId">SİLMEYİ GERİ AL</a>
+								</td>
+							</tr>
+						}
+
+
+					</tbody>
+				</table>
+
+
+			</div>
+		</div>
+
+
+	</div>
+
+</div>
+
+
+

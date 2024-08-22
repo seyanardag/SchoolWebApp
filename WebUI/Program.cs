@@ -1,7 +1,18 @@
+using WebUI.CustomServices.Abstract;
+using WebUI.CustomServices.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+
+//HttpClient istekleri için gerekli servisin eklenmesi;
+builder.Services.AddHttpClient();
+
+
+builder.Services.AddScoped<IFileUploadService, FileUploadService>();
 
 var app = builder.Build();
 
@@ -22,6 +33,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+	pattern: "{controller=Student}/{action=Index}/{id?}");
 
 app.Run();

@@ -22,5 +22,51 @@ namespace DataAccessLayer.Concrete
 		{
 			return await _context.Students.IgnoreQueryFilters().Where(x=>x.isDeleted).ToListAsync();
 		}
-	}
+
+		public async Task<Student> HardDeletestudentAsync(int id)
+		{
+			var student = await _context.Students.IgnoreQueryFilters().FirstOrDefaultAsync(x => x.StudentId == id);
+			if (student == null)
+			{
+				return null;
+			}
+
+			_context.Students.Remove(student);
+			await _context.SaveChangesAsync();
+
+			return student;
+		}
+
+		public async Task<Student> SoftDeletestudentAsync(int id)
+		{
+			var student = await _context.Students.FindAsync(id);
+			if (student == null)
+			{
+				return null;
+			}
+
+			student.isDeleted = true;
+			await _context.SaveChangesAsync();
+
+			return student;
+		}
+
+        public async Task<Student> UnDeletestudentAsync(int id)
+        {
+            var student = await _context.Students.IgnoreQueryFilters().FirstOrDefaultAsync(x => x.StudentId == id);
+			if (student == null)
+            {
+                return null;
+            }
+
+            student.isDeleted = false;
+            await _context.SaveChangesAsync();
+
+            return student;
+
+        }
+
+
+
+    }
 }
